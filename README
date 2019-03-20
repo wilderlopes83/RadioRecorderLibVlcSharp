@@ -1,0 +1,3 @@
+Erro: unable to load shared library 'libx11':
+  - consegui instalando a dependência:
+     sudo apt-get install libxext-dev

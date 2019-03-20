@@ -17,6 +17,7 @@ namespace RadioRecorderLibVlcSharp
             Core.Initialize();
 
             using (var libvlc = new LibVLC())
+            //var libvlc = "/usr/lib/x86_64-linux-gnu/";
             using (var mediaPlayer = new MediaPlayer(libvlc))
             {
                 // Redirect log output to the console
