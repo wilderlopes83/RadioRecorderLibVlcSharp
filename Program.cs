@@ -21,11 +21,12 @@ namespace RadioRecorderLibVlcSharp
             using (var mediaPlayer = new MediaPlayer(libvlc))
             {
                 // Redirect log output to the console
-                libvlc.Log += (sender, e) => Console.WriteLine($"[{e.Level}] {e.Module}:{e.Message}");
+                //linha abaixo dando erro no linux, pois está usando biblioteca msvcrt, do windows.
+                //libvlc.Log += (sender, e) => Console.WriteLine($"[{e.Level}] {e.Module}:{e.Message}");                
 
-                // Create new media with HLS link
-                var urlRadio = "http://transamerica.crossradio.com.br:9126/live.mp3";
-                var media = new Media(libvlc, urlRadio, FromType.FromLocation);
+                // Create new media with HLS link             
+                var urlRadio = "http://playerservices.streamtheworld.com/api/livestream-redirect/JBFMAAC1.aac";
+                var media = new Media(libvlc, urlRadio, FromType.FromLocation);                
 
                 // Define stream output options. 
                 // In this case stream to a file with the given path and play locally the stream while streaming it.
@@ -34,6 +35,14 @@ namespace RadioRecorderLibVlcSharp
 
                 // Start recording
                 mediaPlayer.Play(media);
+
+                //realiza o parse, para descobrir o RDS (quando aplicável)
+                media.Parse(MediaParseOptions.ParseNetwork);
+
+                //configura evento para recuperar dados do RDS
+                media.MetaChanged += (sender, e) => {
+                    Console.WriteLine($"{DateTime.Now.ToString()} - {media.Meta(MetadataType.NowPlaying)}");                
+                };
 
                 Console.WriteLine($"Recording in {destination}");
                 Console.WriteLine("Press any key to exit");
