@@ -1,3 +1,29 @@
+#Wilder: 21/03/2019 (atualização)
+#Não existe nuget para distribuição linux do libvlc. 
+#Por este motivo, os seguintes passos precisam ser seguidos:
+
+#1) Erro: unable to load shared library 'libx11':
+      - consegui instalando a dependência:
+          sudo apt-get install libxext-dev
+
+#2) Instalar libvlc (https://github.com/videolan/libvlcsharp/blob/master/docs/linux-setup.md)          
+  
+  apt-get install libvlc-dev
+
+#3) Instalar VLC
+
+  apt-get install vlc
+
+#4) Instalar o libvlcsharp (https://www.nuget.org/packages/LibVLCSharp)
+
+  dotnet add package LibVLCSharp --version 0.5.0
+
+
+
+
+
+
+----------------------------------------------------------------------
 #Wilder: 20/03/2019 
 #Não existe nuget para distribuição linux do libvlc. 
 #Por este motivo, os seguintes passos precisam ser seguidos:
