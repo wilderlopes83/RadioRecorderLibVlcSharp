@@ -1,7 +1,9 @@
-#Wilder: 22/03/2019 (atualização docker)
+#Wilder: 22/03/2019 (atualização dockerdocker)
 #Docker
 
-RUN dotnet run --project out/RadioRecorderLibVlcSharp.csproj
+#comando --net=host eh pra pegar a rede da maquina host e o container ter acesso
+#a internet
+docker run --net=host -it radiorecorder:latest
 
 
 
