@@ -1,3 +1,11 @@
+#Wilder: 22/03/2019 (atualização docker)
+#Docker
+
+RUN dotnet run --project out/RadioRecorderLibVlcSharp.csproj
+
+
+
+
 #Wilder: 21/03/2019 (atualização)
 #Não existe nuget para distribuição linux do libvlc. 
 #Por este motivo, os seguintes passos precisam ser seguidos:
